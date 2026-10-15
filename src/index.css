@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fffbf2;
+  color: #14110f;
+  font-family: "Anuphan", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #ffc933;
+  color: #14110f;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition duration-200 active:scale-[0.98];
+  }
+  .btn-light {
+    @apply btn bg-ink text-white hover:bg-ink/85;
+  }
+  .btn-ghost {
+    @apply btn border-2 border-ink bg-white text-ink hover:bg-sun;
+  }
+  .btn-tiktok {
+    @apply btn border-2 border-ink bg-pink font-semibold text-white shadow-[3px_3px_0_#14110F] hover:-translate-x-px hover:-translate-y-px hover:shadow-[5px_5px_0_#14110F];
+  }
+  .surface {
+    @apply rounded-2xl border-2 border-ink bg-surface;
+  }
+  .eyebrow {
+    @apply text-xs font-medium tracking-wide text-muted;
+  }
+  .bg-grid {
+    background-image: radial-gradient(rgba(20, 17, 15, 0.12) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+  }
+}
