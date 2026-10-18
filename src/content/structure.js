@@ -189,17 +189,25 @@ export const menuGroups = [
 export const getSectionBySlug = (slug) =>
   flattenedSections.find((s) => s.slug === slug);
 
-export const getSectionIndex = (slug) =>
-  flattenedSections.findIndex((s) => s.slug === slug);
+// ลำดับหน้าสำหรับปุ่มย้อนกลับ/ถัดไป: บทนำเดินตามหัวข้อย่อย ส่วนหัวข้ออื่นเดินตามหัวข้อใน Navbar
+export const navPages = [
+  ...chapters[0].sections.map((x) => ({ slug: x.slug, title: x.title, slugs: [x.slug] })),
+  ...menuGroups.slice(1).map((g) => {
+    const slugs = g.key === "document"
+      ? ["document"]
+      : chapters.find((c) => c.key === g.key).sections.map((x) => x.slug);
+    return { slug: slugs[0], title: g.label, slugs };
+  }),
+];
+
+export const getNavIndex = (slug) => navPages.findIndex((p) => p.slugs.includes(slug));
 
 export const getPrevSection = (slug) => {
-  const idx = getSectionIndex(slug);
-  return idx > 0 ? flattenedSections[idx - 1] : null;
+  const idx = getNavIndex(slug);
+  return idx > 0 ? navPages[idx - 1] : null;
 };
 
 export const getNextSection = (slug) => {
-  const idx = getSectionIndex(slug);
-  return idx >= 0 && idx < flattenedSections.length - 1
-    ? flattenedSections[idx + 1]
-    : null;
+  const idx = getNavIndex(slug);
+  return idx >= 0 && idx < navPages.length - 1 ? navPages[idx + 1] : null;
 };

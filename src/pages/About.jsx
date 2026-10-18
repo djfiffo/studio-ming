@@ -11,7 +11,7 @@ export default function About() {
       <PageHeader section={section} />
       <div className="mx-auto max-w-3xl px-4 py-12 md:px-0">
         <p className="text-base leading-8 text-ink/75 md:text-[17px]">
-          โครงงานนี้ศึกษาและพัฒนาสื่อการเรียนรู้ดิจิทัลผ่าน TikTok ในหัวข้อเทคนิคการตกแต่งภาพเพื่อการค้า
+          โครงงานนี้ศึกษาและพัฒนาคอนเทนต์การสอนแต่งภาพสำหรับการตลาดด้วย AI ผ่านแพลตฟอร์ม TikTok
           โดยมีผู้จัดทำและอาจารย์ที่ปรึกษาดังต่อไปนี้
         </p>
 
@@ -43,7 +43,7 @@ export default function About() {
         <div className="surface mt-10 flex flex-col items-start justify-between gap-5 p-6 sm:flex-row sm:items-center">
           <div>
             <p className="font-medium">ดูฉบับวิดีโอสั้นของโครงงาน</p>
-            <p className="mt-1 text-sm text-muted">ติดตามคลิปเทคนิคการตกแต่งภาพได้ที่ TikTok</p>
+            <p className="mt-1 text-sm text-muted">ติดตามคลิปสอนแต่งภาพด้วย AI ได้ที่ TikTok</p>
           </div>
           <a href={siteConfig.tiktokUrl} target="_blank" rel="noopener noreferrer" className="btn-tiktok shrink-0">
             <TikTokIcon />

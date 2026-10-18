@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { chapters, menuGroups, aboutPage } from "../content/structure.js";
 import { siteConfig } from "../content/site.js";
 import { TikTokIcon } from "../components/Navbar.jsx";
-import EditorDemo from "../components/EditorDemo.jsx";
 import CommentShowcase from "../components/CommentShowcase.jsx";
 
 const journey = [
@@ -23,21 +22,18 @@ export default function Home() {
         <div className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-cyan/30 blur-[90px]" />
         <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-pink/25 blur-[100px]" />
 
-        <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-20 md:px-6 md:pt-28">
+        <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-20 md:px-6 md:pt-28">
           <div className="mx-auto max-w-4xl text-center animate-rise">
             <span className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-white px-3 py-1 text-xs font-medium text-ink">
               <span className="h-2 w-2 rounded-full bg-pink" />
-              โครงงานสื่อการเรียนรู้ดิจิทัล
+              โครงงานคอนเทนต์สอน Prompt ด้วย AI
             </span>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.3] tracking-tight sm:text-5xl md:text-[3.4rem]">
-              เรียนรู้การตกแต่งภาพเพื่อการค้า
+              การพัฒนาคอนเทนต์การสอนแต่งภาพสำหรับการตลาดด้วย AI
               <span className="block pt-1 text-pink">
-                ในรูปแบบวิดีโอสั้น
+                ผ่านแพลตฟอร์ม TikTok
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ink/70 md:text-lg">
-              {siteConfig.projectTitle}
-            </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a href={siteConfig.tiktokUrl} target="_blank" rel="noopener noreferrer" className="btn-tiktok w-full !px-6 !py-3 text-base sm:w-auto">
                 <TikTokIcon className="h-4 w-4" />
@@ -49,12 +45,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mx-auto mt-16 max-w-5xl animate-rise" style={{ animationDelay: "150ms" }}>
-            <EditorDemo />
-            <p className="mt-4 text-center text-xs text-muted">
-              ตัวอย่างเชิงโต้ตอบ: ปรับแสง คอนทราสต์ และความสด เพื่อเห็นความต่างของภาพก่อน-หลังตกแต่ง
-            </p>
-          </div>
         </div>
       </section>
 
@@ -108,7 +98,7 @@ export default function Home() {
               <div className="relative flex h-full flex-col justify-end overflow-hidden rounded-[1.2rem] bg-gradient-to-b from-neutral-800 to-black p-3">
                 <div className="absolute inset-x-3 top-8 h-24 rounded-lg bg-gradient-to-br from-pink/80 to-cyan/60 opacity-90" />
                 <div className="absolute right-2 top-3 text-white"><TikTokIcon className="h-4 w-4" /></div>
-                <p className="relative text-[11px] font-semibold text-white">ตกแต่งภาพสินค้าให้ขายได้</p>
+                <p className="relative text-[11px] font-semibold text-white">Prompt แต่งภาพด้วย AI</p>
                 <p className="relative mt-0.5 text-[9px] text-white/60">{siteConfig.tiktokHandle}</p>
               </div>
             </div>
@@ -169,7 +159,7 @@ export default function Home() {
           <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-cyan/25 blur-[90px]" />
           <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-pink/25 blur-[90px]" />
           <h2 className="relative text-3xl font-bold tracking-tight md:text-4xl">ดูฉบับวิดีโอบน TikTok</h2>
-          <p className="relative mx-auto mt-3 max-w-md text-ink/70">ติดตามเพื่อไม่พลาดคลิปเทคนิคการตกแต่งภาพเพื่อการค้า</p>
+          <p className="relative mx-auto mt-3 max-w-md text-ink/70">ติดตามเพื่อไม่พลาดคลิปสอนเขียน prompt แต่งภาพด้วย AI</p>
           <a href={siteConfig.tiktokUrl} target="_blank" rel="noopener noreferrer" className="btn-tiktok relative mt-8 !px-6 !py-3 text-base">
             <TikTokIcon className="h-4 w-4" />
             Follow {siteConfig.tiktokHandle}

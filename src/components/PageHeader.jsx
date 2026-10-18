@@ -1,8 +1,8 @@
-import { flattenedSections } from "../content/structure.js";
+import { navPages, getNavIndex } from "../content/structure.js";
 
 export default function PageHeader({ section }) {
-  const idx = flattenedSections.findIndex((s) => s.slug === section.slug);
-  const total = flattenedSections.length;
+  const idx = getNavIndex(section.slug);
+  const total = navPages.length;
 
   return (
     <div className="relative border-b-2 border-ink">
@@ -14,6 +14,7 @@ export default function PageHeader({ section }) {
         <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
           {section.title}
         </h1>
+        {idx >= 0 && (
         <div className="mt-8 flex items-center gap-3">
           <div className="h-1.5 flex-1 rounded-full bg-ink/10">
             <div
@@ -25,6 +26,7 @@ export default function PageHeader({ section }) {
             {idx + 1} / {total}
           </span>
         </div>
+        )}
       </div>
     </div>
   );

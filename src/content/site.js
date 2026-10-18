@@ -7,11 +7,11 @@
 
 export const siteConfig = {
   projectTitle:
-    "การพัฒนาสื่อการเรียนรู้ดิจิทัลผ่าน TikTok เรื่องเทคนิคการตกแต่งภาพเพื่อการค้า",
-  shortTitle: "TikTok เทคนิคตกแต่งภาพเพื่อการค้า",
+    "การพัฒนาคอนเทนต์การสอนแต่งภาพสำหรับการตลาดด้วย AI ผ่านแพลตฟอร์ม TikTok",
+  shortTitle: "สอนแต่งภาพการตลาดด้วย AI ผ่าน TikTok",
   tiktokUrl: "https://www.tiktok.com/@mimuay20170",
   tiktokHandle: "@mimuay20170",
-  tagline: "สื่อการเรียนรู้ดิจิทัล ที่เปลี่ยนภาพธรรมดา ให้ขายได้จริงบน TikTok",
+  tagline: "สอนเขียน prompt แต่งภาพด้วย AI ให้ขายได้จริงบน TikTok",
 };
 
 export const teamMembers = [
