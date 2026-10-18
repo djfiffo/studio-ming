@@ -48,6 +48,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TIKTOK PROFILE */}
+      <section className="mx-auto max-w-6xl px-4 pt-16 md:px-6 md:pt-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="eyebrow">ผลงานจริงบน TikTok</p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
+            คลิปสอน <span className="text-pink">Prompt</span> ที่ทำจริง เผยแพร่จริง
+          </h2>
+        </div>
+
+        <div className="relative mx-auto mt-10 max-w-5xl">
+          <div className="pointer-events-none absolute -left-10 top-10 h-56 w-56 rounded-full bg-cyan/25 blur-[90px]" />
+          <div className="pointer-events-none absolute -right-10 bottom-0 h-56 w-56 rounded-full bg-pink/25 blur-[90px]" />
+          <div className="relative overflow-hidden rounded-2xl border-2 border-ink bg-white shadow-[8px_8px_0_#14110F]">
+            <div className="flex items-center gap-3 border-b-2 border-ink bg-sun/40 px-4 py-2.5">
+              <div className="flex gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-pink" />
+                <span className="h-2.5 w-2.5 rounded-full bg-sun" />
+                <span className="h-2.5 w-2.5 rounded-full bg-cyan" />
+              </div>
+              <div className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs text-ink/60">
+                <TikTokIcon className="h-3 w-3" />
+                tiktok.com/{siteConfig.tiktokHandle}
+              </div>
+            </div>
+            <img src="/tiktok-profile.png" alt="หน้าโปรไฟล์ TikTok studiomungming พร้อมคลิปสอน Prompt" className="block w-full" loading="lazy" />
+          </div>
+          <div className="absolute -right-2 -top-4 rotate-3 rounded-full border-2 border-ink bg-sun px-4 py-1.5 text-xs font-semibold shadow-[3px_3px_0_#14110F] md:-right-5">
+            ✨ แจก Prompt ใต้คอมเมนต์
+          </div>
+        </div>
+
+        <div className="mx-auto mt-8 flex max-w-5xl flex-wrap justify-center gap-3 text-sm">
+          {[["3,487", "ถูกใจ"], ["135", "ผู้ติดตาม"], ["Prompt AI", "ทุกคลิป"]].map(([n, l]) => (
+            <div key={l} className="rounded-full border-2 border-ink bg-white px-5 py-2 shadow-[3px_3px_0_#14110F]">
+              <span className="font-bold">{n}</span> <span className="text-ink/60">{l}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* COMMENTS */}
       <section className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
         <CommentShowcase />
