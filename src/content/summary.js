@@ -94,7 +94,7 @@ export const ch2 = [
     ["เผยแพร่"],
   ),
   h("เครื่องมือที่ใช้"),
-  stats(["TikTok", "เผยแพร่"], ["Lightroom", "ปรับสี"], ["Canva", "ออกแบบ"], ["CapCut", "ตัดต่อ"]),
+  stats(["Gemini", "สร้างภาพด้วย Prompt"], ["CapCut", "ตัดต่อ"], ["TikTok", "เผยแพร่"]),
 ];
 
 export const ch3 = {
