@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { chapters, standalonePages, aboutPage, flattenedSections } from "../content/structure.js";
+import { chapters, menuGroups, aboutPage } from "../content/structure.js";
 import { siteConfig } from "../content/site.js";
 import { TikTokIcon } from "../components/Navbar.jsx";
 import EditorDemo from "../components/EditorDemo.jsx";
+import CommentShowcase from "../components/CommentShowcase.jsx";
 
 const journey = [
   { title: "เข้าใจปัญหา", body: "ทำไมภาพสินค้าที่ตกแต่งดี จึงเปลี่ยนความสนใจเป็นยอดขายได้", ch: "chapter-1/background" },
@@ -57,25 +58,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* COMMENTS */}
+      <section className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
+        <CommentShowcase />
+      </section>
+
       {/* STORY */}
       <section className="border-b-2 border-ink bg-sun/30">
         <div className="mx-auto max-w-6xl px-4 py-24 md:px-6 md:py-32">
           <div className="grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
-            <div className="md:sticky md:top-28 md:self-start">
+            <div>
               <h2 className="text-3xl font-bold leading-[1.5] tracking-tight md:text-5xl">
                 จากภาพธรรมดา
                 <br />
                 <span className="mt-2 inline-block rounded-lg bg-ink px-3 py-1 leading-[1.4] text-sun">สู่สื่อที่สอนได้จริง</span>
               </h2>
               <p className="mt-6 max-w-sm text-ink/70">
-                เส้นทางของโครงงานตั้งแต่ปัญหาจนถึงผลสรุป อ่านตามลำดับหรือข้ามไปบทที่สนใจก็ได้
+                เส้นทางของโครงงานตั้งแต่ปัญหาจนถึงผลสรุป อ่านตามลำดับหรือข้ามไปหัวข้อที่สนใจก็ได้
               </p>
             </div>
 
             <ul className="space-y-4">
               {journey.map((s) => (
                 <li key={s.title}>
-                  <Link to={`/${s.ch}`} className="group block rounded-2xl border-[3px] border-ink bg-white p-6 shadow-[5px_5px_0_#14110F] transition hover:-translate-y-0.5 hover:shadow-[7px_7px_0_#14110F]">
+                  <Link to={`/${s.ch}`} className="group block rounded-2xl border border-ink/10 bg-white p-6 shadow-[0_8px_24px_rgba(20,17,15,0.06)] transition hover:-translate-y-0.5 hover:border-ink/25 hover:shadow-[0_12px_32px_rgba(20,17,15,0.12)]">
                     <div className="flex items-start justify-between gap-4">
                       <h3 className="text-xl font-semibold">{s.title}</h3>
                       <span className="text-xl transition group-hover:translate-x-1">→</span>
@@ -139,29 +145,18 @@ export default function Home() {
       {/* INDEX */}
       <section className="mx-auto max-w-6xl px-4 pb-24 md:px-6 md:pb-32">
         <div className="mb-8 flex items-end justify-between">
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight">สารบัญ</h2>
-          </div>
-          <p className="hidden text-sm text-muted sm:block">{flattenedSections.length} หัวข้อ</p>
+          <h2 className="text-3xl font-bold tracking-tight">สารบัญ</h2>
+          <p className="hidden text-sm text-muted sm:block">{menuGroups.length + 1} หัวข้อหลัก</p>
         </div>
 
-        <div className="divide-y-2 divide-ink overflow-hidden rounded-2xl border-[3px] border-ink bg-surface">
-          {chapters.map((c) => (
-            <Link key={c.key} to={`/${c.sections[0].slug}`} className="group flex items-center gap-5 px-5 py-5 transition hover:bg-sun/40 md:px-7">
-              <span className="w-6 text-sm font-medium text-muted group-hover:text-ink">{c.number}</span>
+        <div className="divide-y divide-ink/10 overflow-hidden rounded-2xl border border-ink/10 bg-surface shadow-[0_8px_24px_rgba(20,17,15,0.06)]">
+          {[...menuGroups, { key: "about", label: aboutPage.navLabel, to: `/${aboutPage.slug}`, subs: [] }].map((g, i) => (
+            <Link key={g.key} to={g.to} className="group flex items-center gap-5 px-5 py-5 transition hover:bg-sun/30 md:px-7">
+              <span className="w-6 text-sm font-medium text-muted group-hover:text-ink">{String(i + 1).padStart(2, "0")}</span>
               <div className="min-w-0 flex-1">
-                <p className="font-medium">{c.fullTitle}</p>
-                {c.sections.length > 1 && (
-                  <p className="mt-1 truncate text-xs text-muted">{c.sections.map((s) => s.title).join(" · ")}</p>
-                )}
+                <p className="font-medium">{g.label}</p>
+                {g.subs.length > 0 && <p className="mt-1 truncate text-xs text-muted">{g.subs.join(" · ")}</p>}
               </div>
-              <span className="text-muted transition group-hover:translate-x-1 group-hover:text-ink">→</span>
-            </Link>
-          ))}
-          {[...standalonePages.map((p) => ({ slug: p.slug, label: p.navLabel, tag: "เอกสาร" })), { slug: aboutPage.slug, label: aboutPage.navLabel, tag: "ผู้จัดทำ" }].map((p) => (
-            <Link key={p.slug} to={`/${p.slug}`} className="group flex items-center gap-5 px-5 py-5 transition hover:bg-sun/40 md:px-7">
-              <span className="w-12 text-xs font-medium text-pink">{p.tag}</span>
-              <p className="flex-1 font-medium">{p.label}</p>
               <span className="text-muted transition group-hover:translate-x-1 group-hover:text-ink">→</span>
             </Link>
           ))}

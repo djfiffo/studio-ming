@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { chapters, standalonePages, aboutPage } from "../content/structure.js";
+import { menuGroups, aboutPage } from "../content/structure.js";
 import { siteConfig } from "../content/site.js";
 import { TikTokIcon } from "./Navbar.jsx";
 
@@ -20,11 +20,9 @@ export default function Footer() {
         <div>
           <p className="eyebrow">เนื้อหา</p>
           <ul className="mt-4 space-y-2.5 text-sm text-ink/70">
-            {chapters.map((c) => (
-              <li key={c.key}>
-                <Link to={`/${c.sections[0].slug}`} className="hover:text-ink">
-                  บทที่ {Number(c.number)} {c.shortTitle}
-                </Link>
+            {menuGroups.map((g) => (
+              <li key={g.key}>
+                <Link to={g.to} className="hover:text-ink">{g.label}</Link>
               </li>
             ))}
           </ul>
@@ -32,11 +30,6 @@ export default function Footer() {
         <div>
           <p className="eyebrow">อื่น ๆ</p>
           <ul className="mt-4 space-y-2.5 text-sm text-ink/70">
-            {standalonePages.map((p) => (
-              <li key={p.key}>
-                <Link to={`/${p.slug}`} className="hover:text-ink">{p.navLabel}</Link>
-              </li>
-            ))}
             <li>
               <Link to={`/${aboutPage.slug}`} className="hover:text-ink">{aboutPage.navLabel}</Link>
             </li>

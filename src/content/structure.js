@@ -26,9 +26,8 @@ const placeholder = (label) => [
 export const chapters = [
   {
     key: "chapter-1",
-    number: "01",
     shortTitle: "บทนำ",
-    fullTitle: "บทที่ 1 บทนำ",
+    fullTitle: "บทนำ",
     color: "from-tiktok-cyan to-tiktok-pink",
     sections: [
       {
@@ -55,9 +54,8 @@ export const chapters = [
   },
   {
     key: "chapter-2",
-    number: "02",
-    shortTitle: "เอกสารและงานวิจัยที่เกี่ยวข้อง",
-    fullTitle: "บทที่ 2 เอกสารและงานวิจัยที่เกี่ยวข้อง",
+    shortTitle: "เอกสารที่เกี่ยวข้อง",
+    fullTitle: "เอกสารที่เกี่ยวข้อง",
     color: "from-tiktok-pink to-purple-500",
     sections: [
       {
@@ -69,9 +67,8 @@ export const chapters = [
   },
   {
     key: "chapter-3",
-    number: "03",
-    shortTitle: "วิธีดำเนินการศึกษาค้นคว้า",
-    fullTitle: "บทที่ 3 วิธีดำเนินการศึกษาค้นคว้า",
+    shortTitle: "ผลการศึกษา",
+    fullTitle: "ผลการศึกษา",
     color: "from-purple-500 to-tiktok-cyan",
     sections: [
       {
@@ -104,15 +101,6 @@ export const chapters = [
         title: "การวิเคราะห์ข้อมูลและสถิติ",
         content: ch3.analysis,
       },
-    ],
-  },
-  {
-    key: "chapter-4",
-    number: "04",
-    shortTitle: "การสร้างเครื่องมือเก็บข้อมูล",
-    fullTitle: "บทที่ 4 การสร้างเครื่องมือเก็บข้อมูล และการหาคุณภาพเครื่องมือ",
-    color: "from-tiktok-cyan to-purple-500",
-    sections: [
       {
         slug: "chapter-4",
         title: "การสร้างเครื่องมือเก็บข้อมูล และการหาคุณภาพเครื่องมือ",
@@ -122,9 +110,8 @@ export const chapters = [
   },
   {
     key: "chapter-5",
-    number: "05",
-    shortTitle: "อภิปรายและสรุปผล",
-    fullTitle: "บทที่ 5 อภิปรายและสรุปผล",
+    shortTitle: "อภิปรายผลและสรุปผลการวิจัย",
+    fullTitle: "อภิปรายผลและสรุปผลการวิจัย",
     color: "from-tiktok-pink to-tiktok-cyan",
     sections: [
       {
@@ -164,30 +151,39 @@ export const aboutPage = {
 // flattenedSections: ลำดับการอ่านทั้งหมดแบบเรียงเส้นตรง ใช้สำหรับปุ่ม
 // "ถัดไป / ย้อนกลับ" ท้ายหน้า — ตามลำดับหัวข้อที่กำหนดไว้ใน requirement
 // ----------------------------------------------------------------------------
+const withChapter = (chapter) =>
+  chapter.sections.map((section) => ({
+    ...section,
+    chapterKey: chapter.key,
+    chapterShortTitle: chapter.shortTitle,
+    chapterFullTitle: chapter.fullTitle,
+  }));
+
+const standaloneSections = standalonePages.map((p) => ({
+  ...p,
+  chapterKey: p.key,
+  chapterShortTitle: p.navLabel,
+  chapterFullTitle: p.navLabel,
+}));
+
+// ลำดับเดียวกับ Navbar: บทนำ → เอกสารที่เกี่ยวข้อง → ผลการศึกษา → เล่มประกอบโครงงาน → อภิปรายผล
 export const flattenedSections = [
-  ...chapters.flatMap((chapter) =>
-    chapter.sections.map((section) => ({
-      ...section,
-      chapterKey: chapter.key,
-      chapterShortTitle: chapter.shortTitle,
-      chapterFullTitle: chapter.fullTitle,
-      chapterNumber: chapter.number,
-    }))
-  ),
-  ...standalonePages.map((p) => ({
-    ...p,
-    chapterKey: p.key,
-    chapterShortTitle: p.navLabel,
-    chapterFullTitle: p.navLabel,
-    chapterNumber: "",
-  })),
+  ...chapters.slice(0, 3).flatMap(withChapter),
+  ...standaloneSections,
+  ...chapters.slice(3).flatMap(withChapter),
   {
     ...aboutPage,
     chapterKey: aboutPage.key,
     chapterShortTitle: aboutPage.navLabel,
     chapterFullTitle: aboutPage.navLabel,
-    chapterNumber: "",
   },
+];
+
+// รายการหัวข้อหลักตามลำดับ Navbar ใช้ใน Footer และสารบัญหน้าแรก
+export const menuGroups = [
+  ...chapters.slice(0, 3).map((c) => ({ key: c.key, label: c.shortTitle, to: `/${c.sections[0].slug}`, subs: c.sections.length > 1 ? c.sections.map((x) => x.title) : [] })),
+  ...standalonePages.map((p) => ({ key: p.key, label: p.navLabel, to: `/${p.slug}`, subs: [] })),
+  ...chapters.slice(3).map((c) => ({ key: c.key, label: c.shortTitle, to: `/${c.sections[0].slug}`, subs: c.sections.length > 1 ? c.sections.map((x) => x.title) : [] })),
 ];
 
 export const getSectionBySlug = (slug) =>

@@ -9,7 +9,7 @@ export default function PageHeader({ section }) {
       <div className="bg-grid pointer-events-none absolute inset-0" />
       <div className="relative mx-auto max-w-3xl px-4 pb-10 pt-14 md:px-0 md:pt-20">
         <p className="eyebrow">
-          {section.chapterNumber ? `บทที่ ${Number(section.chapterNumber)} · ${section.chapterShortTitle}` : section.chapterShortTitle}
+          {section.chapterShortTitle}
         </p>
         <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
           {section.title}
