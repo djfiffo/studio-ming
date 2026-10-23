@@ -143,8 +143,8 @@ export const standalonePages = [
 export const aboutPage = {
   key: "about",
   slug: "about",
-  navLabel: "เกี่ยวกับเรา",
-  title: "เกี่ยวกับเรา",
+  navLabel: "ที่ปรึกษาและผู้จัดทำ",
+  title: "ที่ปรึกษาและผู้จัดทำ",
 };
 
 // ----------------------------------------------------------------------------

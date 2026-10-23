@@ -150,6 +150,34 @@ function Block({ block }) {
           ))}
         </div>
       );
+    case "result-highlights":
+      return (
+        <div className="grid gap-5 md:grid-cols-2">
+          {block.items.map((item) => (
+            <article key={item.title} className="rounded-[2rem] border-2 border-white bg-slate-50 p-6 shadow-[0_8px_24px_rgba(20,17,15,0.12)] ring-1 ring-ink/15 md:p-8">
+              <div className="flex items-start gap-4">
+                <span className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl ${item.icon === "check" ? "bg-emerald-100 text-emerald-600" : "bg-sky-100 text-sky-600"}`}>
+                  {item.icon === "check" ? (
+                    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m4 12 5 5L20 6" /></svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="9" /><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" /></svg>
+                  )}
+                </span>
+                <div>
+                  <p className={`text-lg font-semibold ${item.icon === "check" ? "text-emerald-600" : "text-sky-600"}`}>{item.eyebrow}</p>
+                  <h3 className="text-2xl font-bold leading-snug text-slate-900">{item.title}</h3>
+                </div>
+              </div>
+              <div className="mt-7 flex flex-wrap items-end gap-x-3 gap-y-1 text-slate-900">
+                <p className="text-5xl font-extrabold leading-none md:text-6xl">X̄ = {item.mean}</p>
+                <p className="text-lg text-slate-500">(S.D. = {item.sd})</p>
+              </div>
+              <p className={`mt-4 text-lg font-bold ${item.icon === "check" ? "text-emerald-600" : "text-sky-600"}`}>ระดับ “{item.level}”</p>
+              <p className="mt-4 text-base leading-7 text-slate-600">{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      );
     case "cards":
       return (
         <div className={`grid gap-3 ${block.cols === 3 ? "md:grid-cols-3" : "sm:grid-cols-2"}`}>

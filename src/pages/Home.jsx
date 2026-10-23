@@ -5,13 +5,13 @@ import { TikTokIcon } from "../components/Navbar.jsx";
 import CommentShowcase from "../components/CommentShowcase.jsx";
 
 const journey = [
-  { title: "เข้าใจปัญหา", body: "ทำไมภาพสินค้าที่ตกแต่งดี จึงเปลี่ยนความสนใจเป็นยอดขายได้", ch: "chapter-1/background" },
-  { title: "ออกแบบสื่อการเรียนรู้", body: "วางโครงเนื้อหาและกระบวนการผลิตวิดีโอสั้นสำหรับ TikTok", ch: "chapter-3/production-process" },
-  { title: "ตรวจสอบคุณภาพ", body: "สร้างเครื่องมือเก็บข้อมูล และหาคุณภาพก่อนนำไปใช้จริง", ch: "chapter-4" },
-  { title: "สรุปและต่อยอด", body: "อภิปรายผล พร้อมข้อเสนอแนะสำหรับการพัฒนาต่อ", ch: "chapter-5/discussion" },
+  { title: "เข้าใจปัญหา", body: "วิเคราะห์ว่าทำไมภาพสินค้าที่สวยงามจึงเปลี่ยนความสนใจเป็นยอดขายได้", ch: "chapter-1/background" },
+  { title: "ออกแบบสื่อ", body: "วางโครงเรื่อง ผลิตวิดีโอสั้น และแจก Prompt สำหรับ TikTok", ch: "chapter-3/production-process" },
+  { title: "ตรวจสอบคุณภาพ", body: "ให้ผู้เชี่ยวชาญประเมิน (IOC) และทดลองใช้กับกลุ่มสรุบ“ ตัวอย่าง 30 คน", ch: "chapter-4" },
+  { title: "สรุปและต่อยอด", body: "วิเคราะห์ความพึงพอใจ สรุปผลวิจัย และเสนอแนวทางพัฒนา ต่อ", ch: "chapter-5/discussion" },
 ];
 
-const pipeline = ["ถ่ายภาพ", "ตกแต่ง", "เล่าเรื่อง", "เผยแพร่"];
+const pipeline = ["ถ่ายภาพสินค้า", "เสกฉากหรูด้วยAI", "ปั้นคอนเทนต์ขาย", "โพสต์กวาด ยอดขาย"];
 
 export default function Home() {
   return (
@@ -48,8 +48,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TIKTOK PROFILE */}
+      {/* PRESENTATION + QR */}
       <section className="mx-auto max-w-6xl px-4 pt-16 md:px-6 md:pt-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="eyebrow">วิดีโอนำเสนอโครงงาน</p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">ชมภาพรวมโครงงาน</h2>
+        </div>
+        <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-2xl border-2 border-ink bg-black shadow-[8px_8px_0_#14110F]">
+          <video className="block aspect-video w-full" controls preload="metadata">
+            <source src="/mingstudio-presentation.mp4" type="video/mp4" />
+            เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+          </video>
+        </div>
+        <div className="mx-auto mt-10 w-fit text-center">
+          <img src="/tiktok-qr.jpg" alt="QR Code สำหรับช่อง TikTok studiomungming" className="h-44 w-44 rounded-2xl border-2 border-ink bg-white p-2 shadow-[4px_4px_0_#14110F]" loading="lazy" />
+          <p className="mt-4 text-lg font-semibold">studiomungming</p>
+        </div>
+      </section>
+
+      {/* TIKTOK PROFILE */}
+      <section className="mx-auto max-w-6xl px-4 pt-20 md:px-6 md:pt-28">
         <div className="mx-auto max-w-4xl text-center">
           <p className="eyebrow">ผลงานจริงบน TikTok</p>
           <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
@@ -99,9 +117,9 @@ export default function Home() {
           <div className="grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
             <div>
               <h2 className="text-3xl font-bold leading-[1.5] tracking-tight md:text-5xl">
-                จากภาพธรรมดา
+                ชุบรูปพัง
                 <br />
-                <span className="mt-2 inline-block rounded-lg bg-ink px-3 py-1 leading-[1.4] text-sun">สู่สื่อที่สอนได้จริง</span>
+                <span className="mt-2 inline-block rounded-lg bg-ink px-3 py-1 leading-[1.4] text-sun">ให้ปังยอดขายด้วย AI</span>
               </h2>
               <p className="mt-6 max-w-sm text-ink/70">
                 เส้นทางของโครงงานตั้งแต่ปัญหาจนถึงผลสรุป อ่านตามลำดับหรือข้ามไปหัวข้อที่สนใจก็ได้
@@ -165,7 +183,7 @@ export default function Home() {
           <div className="surface p-6 md:col-span-3">
             <p className="font-semibold">สื่อที่ผู้เรียนนำไปใช้ได้ทันที</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              เน้นเทคนิคที่ใช้กับภาพสินค้าจริง และผ่านการตรวจสอบคุณภาพเครื่องมือก่อนนำไปใช้เก็บข้อมูล
+              คัดสรรเฉพาะเทคนิคการแต่งภาพสินค้าที่ใช้ได้จริงในเชิงพาณิชย์ พร้อมแจกชุดคำสั่ง (Prompt Template) สำเร็จรูป ช่วยลดต้นทุน ยกระดับแบรนด์ และเพิ่มโอกาสสร้างยอดขายบน TikTok ได้อย่างมีประสิทธิภาพ
             </p>
             <Link to="/chapter-3/tools" className="mt-4 inline-block text-sm font-medium underline underline-offset-4 hover:text-pink">ดูวิธีดำเนินการ →</Link>
           </div>

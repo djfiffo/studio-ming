@@ -33,6 +33,7 @@ const navItems = [
   { label: "ผลการศึกษา", to: "/chapter-3/tools", match: ["/chapter-3", "/chapter-4"] },
   { label: "เล่มประกอบโครงงาน", to: `/${standalonePages[0].slug}`, match: ["/document"] },
   { label: "อภิปรายผลและสรุปผลการวิจัย", to: "/chapter-5/discussion", match: ["/chapter-5"] },
+  { label: aboutPage.navLabel, to: `/${aboutPage.slug}`, match: [`/${aboutPage.slug}`] },
 ];
 
 export default function Navbar() {
@@ -56,7 +57,7 @@ export default function Navbar() {
           <span className="text-base font-semibold tracking-tight">mingstudio</span>
         </Link>
 
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-1 xl:flex">
           {navItems.map((item) =>
             item.dropdown ? (
               <div key={item.label} className="relative" onMouseEnter={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)}>
@@ -103,7 +104,7 @@ export default function Navbar() {
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border-2 border-ink text-ink lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border-2 border-ink text-ink xl:hidden"
             aria-label="เปิดเมนู"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -114,7 +115,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="mx-auto mt-2 max-h-[80vh] max-w-6xl overflow-y-auto rounded-2xl border-2 border-ink bg-white px-4 py-4 shadow-[4px_4px_0_#14110F] lg:hidden">
+        <div className="mx-auto mt-2 max-h-[80vh] max-w-6xl overflow-y-auto rounded-2xl border-2 border-ink bg-white px-4 py-4 shadow-[4px_4px_0_#14110F] xl:hidden">
           {navItems.map((item) => (
             <div key={item.label}>
               <Link to={item.to} className={`block ${linkCls(isActive(item))} !text-sm`}>
@@ -132,9 +133,6 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <Link to={`/${aboutPage.slug}`} className={`block ${linkCls(pathname === `/${aboutPage.slug}`)} !text-sm`}>
-            {aboutPage.navLabel}
-          </Link>
           <a href={siteConfig.tiktokUrl} target="_blank" rel="noopener noreferrer" className="btn-tiktok mt-4 w-full">
             <TikTokIcon />
             Follow on TikTok
